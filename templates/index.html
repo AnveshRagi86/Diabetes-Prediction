@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Predictor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&family=Yeseva+One&display=swap" rel="stylesheet">
+    <style>
+        body{
+            background-image: url("https://docpulse.com/wp-content/uploads/2024/02/cms.jpg");
+            background-repeat: no-repeat;
+            background-position: -600px center;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .welcome-slide {
+            background-image: url('https://5.imimg.com/data5/KC/WT/XB/SELLER-1098961/glucose-meter.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* background-color: white; */
+            display: flex;
+            align-items: center;
+            /* justify-content: center; */
+            z-index: 1000;
+            transition: transform 0.5s ease;
+        }
+
+        .welcome-slide.slide-up {
+            transform: translateY(-100%);
+        }
+
+        .form-control{
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body data-bs-theme="light" style="font-family: 'Play';">
+
+    <div class="welcome-slide" id="welcomeSlide" data-bs-theme="dark">
+        
+        <div style="margin: 10%;margin-right: 6%; width: 30%;">
+            <h1 style="font-size: 80px; font-family: 'Yeseva One';">DIABETES<br> PRECTION</h1>
+            <hr>
+            <p>Click here to get started.</p><br>
+            <button id="getStartedBtn" class="btn btn-dark btn-lg">Get Started</button><br><br>
+            <p>~ R. Anvesh B22AI086</p>
+        </div>
+        <div>
+        </div>
+    </div>
+
+    <div class="container my-5" style="width: 40%;margin-left: 100px;">
+        <h1>Diabetes Prediction App : </h1>
+        <form method="POST" onsubmit="CheckDiabetes(event)">
+            <br>
+            <div style="display: flex;">
+                <label style="width: 50%;font-size: x-large;" for="pregnancy" class="form-label">Pregnancies</label>
+                <input style="width: 50%;" type="text" class="form-control" id="pregnancy" readonly >
+            </div>
+            <br>
+            <input type="range" class="form-range pregnancy" min="0" max="17" step="1" value="0">
+            <br>
+            <div style="display: flex;">
+                <label style="width: 50%;font-size: x-large;" for="Glucose" class="form-label">Glucose Levels</label>
+                <input style="width: 50%;" type="text" class="form-control" id="Glucose" readonly  >
+            </div>
+            <br>
+            <input type="range" class="form-range Glucose" min="0" max="199" step="1" value="0">
+
+            <br>
+            <div style="display: flex;">
+                <label style="width: 50%;font-size: x-large;" for="BloodPressure" class="form-label">Blood Pressure</label>
+                <input style="width: 50%;" type="text" class="form-control" id="BloodPressure" readonly >
+            </div>
+            <br>
+            <input type="range" class="form-range BloodPressure" min="0" max="122" step="1" value="0">
+
+            <br>
+            <div style="display: flex;">
+                <label style="width: 50%;font-size: x-large;" for="SkinThickness" class="form-label">Skin Thickness</label>
+                <input style="width: 50%;" type="text" class="form-control" id="SkinThickness"readonly  >
+            </div>
+            <br>
+            <input type="range" class="form-range SkinThickness" min="0" max="99" step="1" value="0">
+            
+            <br>
+            <div style="display: flex;">
+                <label style="width: 50%;font-size: x-large;" for="Insulin" class="form-label">Insulin</label>
+                <input style="width: 50%;" type="text" class="form-control" id="Insulin"  readonly >
+            </div>
+            <br>
+            <input type="range" class="form-range Insulin" min="0" max="845" step="1" value="0">
+            
+            <br>
+            <div style="display: flex;">
+                <label style="width: 50%;font-size: x-large;" for="BMI" class="form-label">Body Mass Index</label>
+                <input style="width: 50%;" type="text" class="form-control" id="BMI" readonly >
+            </div>
+            <br>
+            <input type="range" class="form-range BMI" min="0" max="68" step="0.1" value="0">
+
+            <br>
+            <div style="display: flex;">
+                <label style="width: 50%;font-size: x-large;" for="Pedigree" class="form-label">Diabetes Pedigree Function</label>
+                <input style="width: 50%;" type="text" class="form-control" id="Pedigree" readonly  >
+            </div>
+            <br>
+            <input type="range" class="form-range Pedigree" min="0.078000" max="2.420000" step="0.001" value="0.078000">
+            
+
+            <br>
+            <div style="display: flex;">
+                <label style="width: 50%;font-size: x-large;" for="Age" class="form-label">Age</label>
+                <input style="width: 50%;" type="text" class="form-control" id="Age" readonly >
+            </div>
+            <br>
+            <input type="range" class="form-range Age" min="20" max="81" step="1" value="20">
+
+            <button type="submit" class="btn btn-primary mb-3" id="submit" value="submit"> submit </button>
+            
+        </form>
+    
+        <h1 >Prediction is 
+            <b><span class="pred">
+                
+            </span></b>
+        </h1>
+    </div>
+
+    <script>
+
+        async function CheckDiabetes(event) {
+
+            event.preventDefault();
+
+            data = {
+                pregnancy : document.getElementById('pregnancy').value,
+                glucose : document.getElementById('Glucose').value,
+                BP : document.getElementById('BloodPressure').value,
+                SkinThickness : document.getElementById('SkinThickness').value,
+                Insulin : document.getElementById('Insulin').value,
+                BMI : document.getElementById('BMI').value,
+                Pedigree : document.getElementById('Pedigree').value,
+                Age : document.getElementById('Age').value,
+            }
+
+            console.log(data);
+            const response = await fetch('/predict' , {
+                method : 'POST',
+                headers : {
+                    'Content-Type' : 'application/json',
+                },
+                body : JSON.stringify(data),
+            })
+
+            const results = await response.json();
+            console.log(results);
+            
+            console.log(`Prediction : ${results.prediction}`)
+            console.log(results.values);
+            if (results.prediction == 0){
+                document.querySelector('.pred').innerHTML = `Diabetes Negative`;
+                document.querySelector('.pred').style.color = 'green';
+            } else { 
+                document.querySelector('.pred').innerHTML = `Diabetes positive`;
+                document.querySelector('.pred').style.color = 'red';
+            }
+        }
+
+        document.getElementById('getStartedBtn').addEventListener('click', function() {
+            const welcomeSlide = document.getElementById('welcomeSlide');
+            welcomeSlide.classList.toggle('slide-up'); // Toggle the slide-up class
+        });
+
+        function syncSliderWithInput(sliderClass, inputId) {
+            const slider = document.querySelector(sliderClass);
+            const input = document.getElementById(inputId);
+            input.value = slider.value;
+            input.addEventListener('input', function() {
+                slider.value = input.value;
+            });
+            slider.addEventListener('input', function() {
+                input.value = slider.value;
+            });
+        }
+
+        syncSliderWithInput('.pregnancy', 'pregnancy');
+        syncSliderWithInput('.Glucose', 'Glucose');
+        syncSliderWithInput('.BloodPressure', 'BloodPressure');
+        syncSliderWithInput('.SkinThickness', 'SkinThickness');
+        syncSliderWithInput('.Insulin', 'Insulin');
+        syncSliderWithInput('.BMI', 'BMI');
+        syncSliderWithInput('.Pedigree', 'Pedigree');
+        syncSliderWithInput('.Age', 'Age');
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+</body>
+</html>
